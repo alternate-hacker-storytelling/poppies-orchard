@@ -1,0 +1,28 @@
+# Navbar left menu navigation links
+left:
+  - title: Home
+    url: /
+
+  - title: Stories
+    url: /stories/    
+
+  - title: Plants
+    url: /plants/  
+
+  - title: People
+    url: /people/  
+
+  - title: Places
+    url: /places/          
+
+  - title: About
+    url: /about/  
+
+  - title: Contact
+    url: /contact/      
+
+right:
+
+  - title: Question?
+    url: /contact/
+    button: success

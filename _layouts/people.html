@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<div class="uk-section">
+    <div class="uk-container">
+        <div class="uk-grid-large" data-uk-grid>
+
+            <div class="sidebar-fixed-width uk-visible@m">
+                <div class="sidebar-docs uk-position-fixed uk-margin-top">
+                    {% for section in site.data.navigation_people %}
+                    <h5>{{ section.title }}</h5>
+                    <ul class="uk-nav uk-nav-default doc-nav">
+                    {% for people in section.people %}
+                      {% assign people_url = people | prepend:"/people/" | append:"/" %}
+                      {% assign p = site.people | where:"url", people_url | first %}
+                      <li class="{% if people_url == page.url %}uk-active{% endif %}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="uk-width-1-1 uk-width-expand@m">
+
+                <article class="uk-article">
+
+                    <h1 class="uk-article-title">{{ page.title | escape }}</h1>
+                    <div class="article-content link-primary">
+                        {{ content }}
+                        {% if site.share.people %}
+                            {% include share.html %}
+                        {% endif %}
+                    </div>
+                    <hr class="uk-margin-medium">
+                    {% include related-people.html %}
+                </article>
+
+                <script>
+                    // Table of contents scroll to
+                    UIkit.scroll('#markdown-toc a', {
+                        duration: 400,
+                        offset: 120
+                    });
+                </script>
+
+            </div>
+
+    </div>
+</div>
